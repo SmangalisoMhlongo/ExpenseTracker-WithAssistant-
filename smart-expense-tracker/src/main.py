@@ -11,13 +11,9 @@ def handle_add_expense():
     date = input("Enter date (YYYY-MM-DD): ")
     description = input("Enter description: ")
     amount = input("Enter amount: ")
-
-    # Predict category using ML
+    
     category = predict_category(description)
-
-    # Save expense with predicted category
     add_expense(date, description, amount, category)
-
     print(f"Expense added under category: {category}")
 
 def handle_view_expenses():
