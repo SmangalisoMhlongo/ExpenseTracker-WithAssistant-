@@ -1,11 +1,14 @@
 from data_manager import add_expense, get_all_expenses
 from classifier import predict_category
+from assistant import ask_ai
+
 
 def show_menu():
     print("\n=== Smart Expense Tracker ===")
     print("1. Add expense")
     print("2. View all expenses")
-    print("3. Exit")
+    print("3. Ask the AI assistant")
+    print("4. Exit")
 
 def handle_add_expense():
     date = input("Enter date (YYYY-MM-DD): ")
@@ -35,6 +38,10 @@ def main():
         elif choice == "2":
             handle_view_expenses()
         elif choice == "3":
+            question = input("Ask the AI: ")
+            answer = ask_ai(question)
+            print("\nAI:", answer)
+        elif choice == "4" or choice.lower() == "exit":
             print("Goodbye!")
             break
         else:

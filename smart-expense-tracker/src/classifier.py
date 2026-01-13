@@ -2,13 +2,16 @@ import pandas as pd
 import joblib
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
+import os
 
-MODEL_PATH = "models/expense_classifier.pkl"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+MODEL_PATH = os.path.join(BASE_DIR, "models", "expense_classifier.pkl")
 
 #training the text based classifier to identify the different categories
 def train_model():
     
-    df = pd.read_csv("data/training_data.csv")
+    DATA_PATH = os.path.join(BASE_DIR, "data", "training_data.csv")
+    df = pd.read_csv(DATA_PATH)
 
     X_text = df["description"]
     y = df["category"]
